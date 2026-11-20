@@ -29,3 +29,9 @@ def predicted_error(s, k):
     return np.sqrt(
         np.sum(s[k:] ** 2) / np.sum(s ** 2)
     )
+
+def k_for_error(s, target):
+    """Smallest positive k whose relative error meets the target."""
+    for k in range(1, len(s) + 1):
+        if predicted_error(s, k) <= target:
+            return k
